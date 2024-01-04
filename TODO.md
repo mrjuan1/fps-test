@@ -1,6 +1,6 @@
 # TODO
 
-* [ ] Add screenshot to README
+* [x] Add screenshot to README
 * [x] Add exports (Windows, Linux and Web)
 * [ ] Add controller support
 * [ ] Add touchscreen support (and Android export)

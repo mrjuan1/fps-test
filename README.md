@@ -1,5 +1,7 @@
 # FPS Test
 
+![Screenshot](screenshot.jpg)
+
 A prototype first-person shooter. This is meant to be a small-ish project for learning some more [Godot](https://godotengine.org).
 
 Made with [Godot](https://godotengine.org) 4.2.1.

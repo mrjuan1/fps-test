@@ -100,6 +100,7 @@ shoot={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=2
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/directional_shadow/size=2048

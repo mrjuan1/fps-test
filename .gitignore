@@ -13,6 +13,7 @@ data_*/
 mono_crash.*.json
 
 # Misc.
+screenshot.jpg.import
 exports/**
 addons/
 android/

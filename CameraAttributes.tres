@@ -3,5 +3,4 @@
 [resource]
 auto_exposure_enabled = true
 dof_blur_near_enabled = true
-dof_blur_near_distance = 0.1
 dof_blur_amount = 0.3
