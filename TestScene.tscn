@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwblfojtpdh1h"]
+[gd_scene load_steps=15 format=3 uid="uid://bwblfojtpdh1h"]
 
-[ext_resource type="Script" path="res://node_3d.gd" id="1_cfd06"]
-[ext_resource type="PackedScene" uid="uid://oux3q3jhwmk" path="res://player.tscn" id="2_7yk5s"]
-[ext_resource type="PackedScene" uid="uid://cf8bqnjdbiujb" path="res://RedBox.tscn" id="3_ym5p5"]
-[ext_resource type="PackedScene" uid="uid://be4i40wnj201i" path="res://tunnel.tscn" id="4_ltdef"]
+[ext_resource type="Script" path="res://TestScene.gd" id="1_4goaw"]
+[ext_resource type="PackedScene" uid="uid://be4i40wnj201i" path="res://Objects/Tunnel.tscn" id="2_7q0lm"]
+[ext_resource type="LabelSettings" uid="uid://c4kvbo0d1gj0f" path="res://LabelSettings.tres" id="2_hk17g"]
+[ext_resource type="Script" path="res://FPSLabel.gd" id="3_2ntdi"]
+[ext_resource type="PackedScene" uid="uid://cf8bqnjdbiujb" path="res://Objects/RedBox.tscn" id="3_egdkh"]
+[ext_resource type="PackedScene" uid="uid://oux3q3jhwmk" path="res://Objects/Player.tscn" id="4_3c32f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pq074"]
 sky_horizon_color = Color(0.64625, 0.6635, 0.6875, 1)
@@ -25,8 +27,9 @@ font_size = 32
 font_color = Color(0, 0, 0, 1)
 outline_size = 1
 
-[sub_resource type="LabelSettings" id="LabelSettings_d067m"]
+[sub_resource type="LabelSettings" id="LabelSettings_otsyd"]
 font_size = 32
+font_color = Color(1, 0, 0, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.501961)
 
@@ -38,13 +41,13 @@ albedo_color = Color(0, 0.635294, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_df5j1"]
 albedo_color = Color(1, 0.92549, 0.8, 1)
 
-[node name="Node3D" type="Node3D"]
-script = ExtResource("1_cfd06")
+[node name="TestScene" type="Node3D"]
+script = ExtResource("1_4goaw")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q6854")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="SunLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
@@ -81,144 +84,164 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "HP"
-label_settings = SubResource("LabelSettings_d067m")
+label_settings = ExtResource("2_hk17g")
 
-[node name="World" type="Node3D" parent="."]
+[node name="FPSLabel" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "FPS"
+label_settings = SubResource("LabelSettings_otsyd")
+script = ExtResource("3_2ntdi")
 
-[node name="Tunnels" type="Node3D" parent="World"]
+[node name="FPSTimer" type="Timer" parent="UI/FPSLabel"]
+wait_time = 0.5
+autostart = true
 
-[node name="Tunnel" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Tunnels" type="Node3D" parent="Level"]
+
+[node name="Tunnel" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 17, 0, 17)
 
-[node name="Tunnel2" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel2" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -17, 0, -17)
 
-[node name="Tunnel3" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel3" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17, 0, 17)
 
-[node name="Tunnel4" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel4" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 17, 0, -17)
 
-[node name="Tunnel6" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel6" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -20)
 
-[node name="Tunnel7" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel7" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -20)
 
-[node name="Tunnel8" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel8" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 20)
 
-[node name="Tunnel9" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel9" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 20)
 
-[node name="Tunnel10" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel10" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, 7)
 
-[node name="Tunnel11" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel11" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, -7)
 
-[node name="Tunnel12" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel12" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, 7)
 
-[node name="Tunnel13" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+[node name="Tunnel13" parent="Level/Tunnels" instance=ExtResource("2_7q0lm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, -7)
 
-[node name="RedBox" parent="World" instance=ExtResource("3_ym5p5")]
+[node name="RedBox" parent="Level" instance=ExtResource("3_egdkh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
 
-[node name="RedBox2" parent="World" instance=ExtResource("3_ym5p5")]
+[node name="RedBox2" parent="Level" instance=ExtResource("3_egdkh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
 
-[node name="RedBox3" parent="World" instance=ExtResource("3_ym5p5")]
+[node name="RedBox3" parent="Level" instance=ExtResource("3_egdkh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
 
-[node name="RedBox4" parent="World" instance=ExtResource("3_ym5p5")]
+[node name="RedBox4" parent="Level" instance=ExtResource("3_egdkh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="World"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10)
 use_collision = true
 size = Vector3(10, 2, 0.5)
 material = SubResource("StandardMaterial3D_awpwe")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="World"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
 use_collision = true
 size = Vector3(10, 2, 0.5)
 material = SubResource("StandardMaterial3D_awpwe")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="World"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Level"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 1, 4.37114e-07)
 use_collision = true
 size = Vector3(10, 2, 0.5)
 material = SubResource("StandardMaterial3D_awpwe")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="World"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Level"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 1, -4.37114e-07)
 use_collision = true
 size = Vector3(10, 2, 0.5)
 material = SubResource("StandardMaterial3D_awpwe")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="World"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
 size = Vector3(50, 1, 50)
 material = SubResource("StandardMaterial3D_4oan4")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="World"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 1.5, 0)
 use_collision = true
 size = Vector3(1, 3, 50)
 material = SubResource("StandardMaterial3D_df5j1")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="World"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 1.5, 0)
 use_collision = true
 size = Vector3(1, 3, 50)
 material = SubResource("StandardMaterial3D_df5j1")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="World"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.5, -25.5)
 use_collision = true
 size = Vector3(1, 3, 50)
 material = SubResource("StandardMaterial3D_df5j1")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="World"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.5, 25.5)
 use_collision = true
 size = Vector3(1, 3, 50)
 material = SubResource("StandardMaterial3D_df5j1")
 
-[node name="Player" parent="." node_paths=PackedStringArray("hp_label") instance=ExtResource("2_7yk5s")]
-is_controlling = true
-hp_label = NodePath("../UI/HPLabel")
+[node name="Players" type="Node3D" parent="."]
 
-[node name="Enemy" parent="." instance=ExtResource("2_7yk5s")]
+[node name="Player" parent="Players" node_paths=PackedStringArray("hp_label") instance=ExtResource("4_3c32f")]
+is_controlling = true
+hp_label = NodePath("../../UI/HPLabel")
+
+[node name="Enemy" parent="Players" instance=ExtResource("4_3c32f")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -5)
 
-[node name="Player2" parent="." instance=ExtResource("2_7yk5s")]
+[node name="Player2" parent="Players" instance=ExtResource("4_3c32f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0774, 0, -5.39909)
 
-[node name="Player3" parent="." instance=ExtResource("2_7yk5s")]
+[node name="Player3" parent="Players" instance=ExtResource("4_3c32f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7823, 0, -19.9331)
 
-[node name="Player4" parent="." instance=ExtResource("2_7yk5s")]
+[node name="Player4" parent="Players" instance=ExtResource("4_3c32f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3622, 2.6, -6.99146)
 
-[node name="Player5" parent="." instance=ExtResource("2_7yk5s")]
+[node name="Player5" parent="Players" instance=ExtResource("4_3c32f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0583, 0, 2.12613)
 
-[node name="Player6" parent="." instance=ExtResource("2_7yk5s")]
+[node name="Player6" parent="Players" instance=ExtResource("4_3c32f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.98879, 2, -10.1406)
 
-[node name="Player7" parent="." instance=ExtResource("2_7yk5s")]
+[node name="Player7" parent="Players" instance=ExtResource("4_3c32f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5397, 0.861498, 22.8778)
 
-[node name="Player8" parent="." instance=ExtResource("2_7yk5s")]
+[node name="Player8" parent="Players" instance=ExtResource("4_3c32f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8416, 0, -18.131)
 
-[node name="Player9" parent="." instance=ExtResource("2_7yk5s")]
+[node name="Player9" parent="Players" instance=ExtResource("4_3c32f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06917, 0, 19.9783)
 
-[node name="Player10" parent="." instance=ExtResource("2_7yk5s")]
+[node name="Player10" parent="Players" instance=ExtResource("4_3c32f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6446, 1, 9.93726)
+
+[connection signal="timeout" from="UI/FPSLabel/FPSTimer" to="UI/FPSLabel" method="_on_fps_timer_timeout"]

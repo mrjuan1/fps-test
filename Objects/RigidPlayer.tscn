@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cy37lofsnelat"]
 
-[ext_resource type="Script" path="res://ridig_gun.gd" id="1_kqsc3"]
+[ext_resource type="Script" path="res://Objects/RigidGun.gd" id="1_4x7w1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utc4h"]
 
@@ -29,29 +29,29 @@ size = Vector3(0.106, 0.244, 0.316)
 
 [node name="RigidPlayer" type="RigidBody3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_kf4fc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_tig5k")
 
-[node name="gun" type="RigidBody3D" parent="."]
+[node name="Gun" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 mass = 0.5
-script = ExtResource("1_kqsc3")
+script = ExtResource("1_4x7w1")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="gun"]
+[node name="GunMesh1" type="MeshInstance3D" parent="Gun"]
 transform = Transform3D(0.103847, -0.00154871, -0.0462759, 0, 0.0944204, -0.0347421, 0.01552, 0.0103627, 0.309639, -0.13, -0.0938531, -0.476605)
 mesh = SubResource("BoxMesh_a8km3")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="gun"]
+[node name="GunMesh2" type="MeshInstance3D" parent="Gun"]
 transform = Transform3D(0.0903469, -0.00232307, -0.0124945, 0, 0.141631, -0.00938037, 0.0135024, 0.015544, 0.0836026, -0.142571, -0.227071, -0.392489)
 mesh = SubResource("BoxMesh_xwklk")
-skeleton = NodePath("../MeshInstance3D2")
+skeleton = NodePath("../GunMesh1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gun"]
+[node name="GunCollision" type="CollisionShape3D" parent="Gun"]
 transform = Transform3D(0.990024, -0.0135048, -0.140253, 0, 0.995396, -0.0958458, 0.140901, 0.0948896, 0.985466, -0.129, -0.166, -0.483)
 shape = SubResource("BoxShape3D_lkg2c")

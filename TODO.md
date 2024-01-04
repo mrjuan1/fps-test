@@ -1,7 +1,7 @@
 # TODO
 
 * [ ] Add screenshot to README
-* [ ] Add exports (Windows, Linux and Web)
+* [x] Add exports (Windows, Linux and Web)
 * [ ] Add controller support
 * [ ] Add touchscreen support (and Android export)
 * [ ] Add VR support (and Meta Quest export)

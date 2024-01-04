@@ -8,7 +8,9 @@ This is still very WIP and not very useful (or fun) yet. See [TODO.md](TODO.md) 
 
 ## Running
 
-The project can probably be started with this version or later. Once it's been opened, it can just be run normally the same as any other [Godot](https://godotengine.org) project (the default is the F5 key).
+The project can probably be started with this version or later. Once it's been opened you need to grab the OpenXR Vendors plugin, enable it and install the Android Build Tmeplate. After that, it can just be run normally the same as any other [Godot](https://godotengine.org) project (the default is the F5 key).
+
+VR is not yet supported, only the initial project configs for it have been done. It's disabled by default in the project settings and would have to be enabled for exports to support it.
 
 The web version can be run by copying `host.py` to the web export folder, running it and browsing to [http://localhost:8000/](http://localhost:8000/).
 

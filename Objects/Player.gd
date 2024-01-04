@@ -3,31 +3,31 @@ extends CharacterBody3D
 @export var is_controlling: bool = false
 @export var hp_label: Label
 
-const HALF_PI = PI / 2.0
-const SPEED = 500.0
-const JUMP_VELOCITY = 4.5
-const PLAYER_ROTATION_SPEED = 1.0
-const CAMERA_TILT_SPEED = 0.5
+const HALF_PI: float = PI / 2.0
+const SPEED: float = 500.0
+const JUMP_VELOCITY: float = 4.5
+const PLAYER_ROTATION_SPEED: float = 1.0
+const CAMERA_TILT_SPEED: float = 0.5
 
-var mouse_relative = Vector2.ZERO
-var input_dir = Vector2.ZERO
-var speed = 0.0
-var hp = 3
+var mouse_relative: Vector2 = Vector2.ZERO
+var input_dir: Vector2 = Vector2.ZERO
+var speed: float = 0.0
+var hp: int = 3
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-@onready var camera_3d: Camera3D = $Camera3D
+@onready var player_camera: Camera3D = $PlayerCamera
 @onready var gun_anim_tree: AnimationTree = %GunAnimTree
 @onready var gun_animation: AnimationPlayer = %GunAnimation
 @onready var ray: RayCast3D = %Ray
-@onready var rigid_player_resource: Resource = preload("res://rigid_player.tscn")
+@onready var rigid_player_resource: Resource = preload("res://Objects/RigidPlayer.tscn")
 
 func _ready() -> void:
 	if is_controlling:
-		camera_3d.make_current()
+		player_camera.make_current()
 		update_hp(true)
 	else:
-		camera_3d.attributes = null
-		camera_3d.clear_current()
+		player_camera.attributes = null
+		player_camera.clear_current()
 
 func _input(event: InputEvent) -> void:
 	if is_controlling and event is InputEventMouseMotion:
@@ -56,7 +56,7 @@ func _process(_delta: float) -> void:
 			gun_anim_tree.set("parameters/conditions/shoot", true)
 			gun_animation.seek(0, true)
 
-			var collider = ray.get_collider()
+			var collider: Object = ray.get_collider()
 			if collider is CharacterBody3D and collider.update_hp():
 				var rigid_player: RigidBody3D = rigid_player_resource.instantiate()
 				rigid_player.position = collider.position
@@ -84,16 +84,16 @@ func _physics_process(delta: float) -> void:
 				camera_tilt_speed *= 0.25
 
 			rotation.y -= mouse_relative.x * player_rotation_speed * delta
-			camera_3d.rotation.x -= mouse_relative.y * camera_tilt_speed * delta
-			camera_3d.rotation.x = clampf(camera_3d.rotation.x, -HALF_PI, HALF_PI)
+			player_camera.rotation.x -= mouse_relative.y * camera_tilt_speed * delta
+			player_camera.rotation.x = clampf(player_camera.rotation.x, -HALF_PI, HALF_PI)
 			mouse_relative = Vector2.ZERO
 
 		if Input.is_action_just_pressed("jump") and is_on_floor() and not gun_anim_tree.get("parameters/conditions/aiming"):
 			velocity.y = JUMP_VELOCITY
 
-		var move_speed = speed * delta
+		var move_speed: float = speed * delta
 		if input_dir:
-			var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 			velocity.x = direction.x * move_speed
 			velocity.z = direction.z * move_speed
 		else:

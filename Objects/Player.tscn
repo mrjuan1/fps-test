@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://oux3q3jhwmk"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_j1sj2"]
+[ext_resource type="Script" path="res://Objects/Player.gd" id="1_j1sj2"]
 [ext_resource type="CameraAttributesPractical" uid="uid://cctrnjuxhnxfn" path="res://CameraAttributes.tres" id="2_gwowx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6hmr"]
@@ -29,7 +29,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/path = NodePath("GunMesh1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +41,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/path = NodePath("GunMesh1:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -86,7 +86,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/path = NodePath("GunMesh1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -98,7 +98,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/path = NodePath("GunMesh1:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -126,7 +126,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/path = NodePath("GunMesh1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -138,7 +138,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/path = NodePath("GunMesh1:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -178,7 +178,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/path = NodePath("GunMesh1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -190,7 +190,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/path = NodePath("GunMesh1:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -229,7 +229,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/path = NodePath("GunMesh1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -241,7 +241,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/path = NodePath("GunMesh1:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -281,7 +281,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/path = NodePath("GunMesh1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -293,7 +293,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/path = NodePath("GunMesh1:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -448,31 +448,31 @@ graph_offset = Vector2(224, 109)
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_j1sj2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_j38dp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_y12ds")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 attributes = ExtResource("2_gwowx")
 fov = 45.0
 
-[node name="gun" type="Node3D" parent="Camera3D"]
+[node name="Gun" type="Node3D" parent="PlayerCamera"]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D/gun"]
+[node name="GunMesh1" type="MeshInstance3D" parent="PlayerCamera/Gun"]
 transform = Transform3D(0.103847, -0.00207552, -0.0460485, 0, 0.0939565, -0.04656, 0.01552, 0.0138877, 0.308118, -0.13, -0.119, -0.445)
 mesh = SubResource("BoxMesh_p6a7a")
 skeleton = NodePath("../../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/gun/MeshInstance3D2"]
+[node name="GunMesh2" type="MeshInstance3D" parent="PlayerCamera/Gun/GunMesh1"]
 transform = Transform3D(0.87, 0, 0, 0, 1.5, 0, 0, 0, 0.27, 0, -1.295, 0.315)
 mesh = SubResource("BoxMesh_xvroo")
 
-[node name="GunAnimation" type="AnimationPlayer" parent="Camera3D/gun"]
+[node name="GunAnimation" type="AnimationPlayer" parent="PlayerCamera/Gun"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_j2pya"),
@@ -480,7 +480,7 @@ libraries = {
 }
 playback_default_blend_time = 0.2
 
-[node name="GunAnimTree" type="AnimationTree" parent="Camera3D/gun"]
+[node name="GunAnimTree" type="AnimationTree" parent="PlayerCamera/Gun"]
 unique_name_in_owner = true
 root_node = NodePath("%GunAnimTree/..")
 libraries = {
@@ -494,6 +494,6 @@ parameters/conditions/idle = true
 parameters/conditions/moving = false
 parameters/conditions/shoot = false
 
-[node name="Ray" type="RayCast3D" parent="Camera3D"]
+[node name="Ray" type="RayCast3D" parent="PlayerCamera"]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -100)

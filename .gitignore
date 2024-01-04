@@ -14,3 +14,5 @@ mono_crash.*.json
 
 # Misc.
 exports/**
+addons/
+android/
