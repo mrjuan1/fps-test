@@ -1,0 +1,499 @@
+[gd_scene load_steps=40 format=3 uid="uid://oux3q3jhwmk"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_j1sj2"]
+[ext_resource type="CameraAttributesPractical" uid="uid://cctrnjuxhnxfn" path="res://CameraAttributes.tres" id="2_gwowx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6hmr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_j38dp"]
+material = SubResource("StandardMaterial3D_i6hmr")
+radius = 0.3
+radial_segments = 32
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y12ds"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msw48"]
+albedo_color = Color(0.529412, 0.529412, 0.529412, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p6a7a"]
+material = SubResource("StandardMaterial3D_msw48")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1tal"]
+albedo_color = Color(0.388235, 0.388235, 0.388235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xvroo"]
+material = SubResource("StandardMaterial3D_a1tal")
+
+[sub_resource type="Animation" id="Animation_00lrl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.13, -0.119, -0.445)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.148353, -0.148353, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:fov")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [45.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:attributes:dof_blur_near_distance")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2pya"]
+_data = {
+"RESET": SubResource("Animation_00lrl")
+}
+
+[sub_resource type="Animation" id="Animation_1rcxc"]
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.119, -0.339), Vector3(0, -0.119, -0.252), Vector3(0, -0.075, -0.191), Vector3(0, -0.119, -0.339), Vector3(0, -0.105, -0.269), Vector3(0, -0.119, -0.269)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.197222, 0, 0), Vector3(0, 0, 0), Vector3(0.010472, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:attributes:dof_blur_near_distance")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_vo7bl"]
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.119, -0.339), Vector3(0, -0.105, -0.339), Vector3(0, -0.119, -0.339)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.010472, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:fov")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [45.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:attributes:dof_blur_near_distance")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_u5ixh"]
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.13, -0.119, -0.445), Vector3(-0.13, -0.09, -0.445), Vector3(-0.13, -0.119, -0.445)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.148353, -0.148353, 0), Vector3(0.10472, -0.148353, 0), Vector3(0.148353, -0.148353, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:fov")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:attributes:dof_blur_near_distance")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+
+[sub_resource type="Animation" id="Animation_mfys8"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.13, -0.118792, -0.445), Vector3(-0.076, -0.129, -0.445), Vector3(-0.031, -0.083, -0.445), Vector3(-0.076, -0.129, -0.445), Vector3(-0.13, -0.118792, -0.445)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.14804, -0.148353, 0), Vector3(0.0802851, -0.0139626, 0), Vector3(0.0820305, 0.0698132, 0), Vector3(0.0802851, -0.0139626, 0), Vector3(0.14804, -0.148353, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:fov")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:attributes:dof_blur_near_distance")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+
+[sub_resource type="Animation" id="Animation_5sqfk"]
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.13, -0.119, -0.445), Vector3(-0.13, -0.119, -0.391), Vector3(-0.13, -0.065, -0.323), Vector3(-0.13, -0.119, -0.445)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.148353, -0.148353, 0), Vector3(0.148353, -0.148353, 0), Vector3(0.439823, -0.148353, 0), Vector3(0.148353, -0.148353, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:fov")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:attributes:dof_blur_near_distance")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8o1n0"]
+_data = {
+"aim-shoot": SubResource("Animation_1rcxc"),
+"aiming": SubResource("Animation_vo7bl"),
+"idle": SubResource("Animation_u5ixh"),
+"moving": SubResource("Animation_mfys8"),
+"shoot": SubResource("Animation_5sqfk")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pikx1"]
+animation = &"gun/aim-shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aic5n"]
+animation = &"gun/aiming"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqrtf"]
+animation = &"gun/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qgkcs"]
+animation = &"gun/moving"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kvotb"]
+animation = &"gun/shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sul1l"]
+animation = &"gun/shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8jaui"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qb605"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7kek4"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_72aer"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"aiming"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ctpqq"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rmibj"]
+advance_mode = 2
+advance_condition = &"shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_scv8y"]
+xfade_time = 0.05
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k5c7c"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bpia3"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hdrv4"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"aiming"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_25o7m"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k77il"]
+advance_mode = 2
+advance_condition = &"shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8i83r"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"aiming"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r3ra3"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w7uve"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_875wu"]
+states/gun_aim-shoot/node = SubResource("AnimationNodeAnimation_pikx1")
+states/gun_aim-shoot/position = Vector2(458.25, 383.5)
+states/gun_aiming/node = SubResource("AnimationNodeAnimation_aic5n")
+states/gun_aiming/position = Vector2(460, 250)
+states/gun_idle/node = SubResource("AnimationNodeAnimation_dqrtf")
+states/gun_idle/position = Vector2(354, 98)
+states/gun_moving/node = SubResource("AnimationNodeAnimation_qgkcs")
+states/gun_moving/position = Vector2(593.5, 99)
+states/gun_shoot/node = SubResource("AnimationNodeAnimation_sul1l")
+states/gun_shoot/position = Vector2(271.5, 249.75)
+"states/gun_shoot 2/node" = SubResource("AnimationNodeAnimation_kvotb")
+"states/gun_shoot 2/position" = Vector2(652.5, 250)
+transitions = ["Start", "gun_idle", SubResource("AnimationNodeStateMachineTransition_8jaui"), "gun_idle", "gun_moving", SubResource("AnimationNodeStateMachineTransition_qb605"), "gun_moving", "gun_idle", SubResource("AnimationNodeStateMachineTransition_7kek4"), "gun_idle", "gun_aiming", SubResource("AnimationNodeStateMachineTransition_72aer"), "gun_aiming", "gun_idle", SubResource("AnimationNodeStateMachineTransition_ctpqq"), "gun_idle", "gun_shoot", SubResource("AnimationNodeStateMachineTransition_rmibj"), "gun_shoot", "gun_idle", SubResource("AnimationNodeStateMachineTransition_scv8y"), "gun_moving", "gun_shoot 2", SubResource("AnimationNodeStateMachineTransition_k5c7c"), "gun_shoot 2", "gun_moving", SubResource("AnimationNodeStateMachineTransition_bpia3"), "gun_moving", "gun_aiming", SubResource("AnimationNodeStateMachineTransition_hdrv4"), "gun_aiming", "gun_moving", SubResource("AnimationNodeStateMachineTransition_25o7m"), "gun_aiming", "gun_aim-shoot", SubResource("AnimationNodeStateMachineTransition_k77il"), "gun_aim-shoot", "gun_aiming", SubResource("AnimationNodeStateMachineTransition_8i83r"), "gun_aim-shoot", "gun_moving", SubResource("AnimationNodeStateMachineTransition_r3ra3"), "gun_aim-shoot", "gun_idle", SubResource("AnimationNodeStateMachineTransition_w7uve")]
+graph_offset = Vector2(224, 109)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_j1sj2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_j38dp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_y12ds")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+attributes = ExtResource("2_gwowx")
+fov = 45.0
+
+[node name="gun" type="Node3D" parent="Camera3D"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D/gun"]
+transform = Transform3D(0.103847, -0.00207552, -0.0460485, 0, 0.0939565, -0.04656, 0.01552, 0.0138877, 0.308118, -0.13, -0.119, -0.445)
+mesh = SubResource("BoxMesh_p6a7a")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/gun/MeshInstance3D2"]
+transform = Transform3D(0.87, 0, 0, 0, 1.5, 0, 0, 0, 0.27, 0, -1.295, 0.315)
+mesh = SubResource("BoxMesh_xvroo")
+
+[node name="GunAnimation" type="AnimationPlayer" parent="Camera3D/gun"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_j2pya"),
+"gun": SubResource("AnimationLibrary_8o1n0")
+}
+playback_default_blend_time = 0.2
+
+[node name="GunAnimTree" type="AnimationTree" parent="Camera3D/gun"]
+unique_name_in_owner = true
+root_node = NodePath("%GunAnimTree/..")
+libraries = {
+"": SubResource("AnimationLibrary_j2pya"),
+"gun": SubResource("AnimationLibrary_8o1n0")
+}
+tree_root = SubResource("AnimationNodeStateMachine_875wu")
+anim_player = NodePath("../GunAnimation")
+parameters/conditions/aiming = false
+parameters/conditions/idle = true
+parameters/conditions/moving = false
+parameters/conditions/shoot = false
+
+[node name="Ray" type="RayCast3D" parent="Camera3D"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -100)

@@ -1,0 +1,224 @@
+[gd_scene load_steps=13 format=3 uid="uid://bwblfojtpdh1h"]
+
+[ext_resource type="Script" path="res://node_3d.gd" id="1_cfd06"]
+[ext_resource type="PackedScene" uid="uid://oux3q3jhwmk" path="res://player.tscn" id="2_7yk5s"]
+[ext_resource type="PackedScene" uid="uid://cf8bqnjdbiujb" path="res://RedBox.tscn" id="3_ym5p5"]
+[ext_resource type="PackedScene" uid="uid://be4i40wnj201i" path="res://tunnel.tscn" id="4_ltdef"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pq074"]
+sky_horizon_color = Color(0.64625, 0.6635, 0.6875, 1)
+ground_bottom_color = Color(0.2, 0.2, 0.2, 1)
+ground_horizon_color = Color(0.64625, 0.6635, 0.6875, 1)
+
+[sub_resource type="Sky" id="Sky_s26h0"]
+sky_material = SubResource("ProceduralSkyMaterial_pq074")
+
+[sub_resource type="Environment" id="Environment_q6854"]
+background_mode = 2
+sky = SubResource("Sky_s26h0")
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_w8n0i"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_d067m"]
+font_size = 32
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.501961)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awpwe"]
+albedo_color = Color(0, 0.635294, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4oan4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_df5j1"]
+albedo_color = Color(1, 0.92549, 0.8, 1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_cfd06")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q6854")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+label_settings = SubResource("LabelSettings_w8n0i")
+
+[node name="HPLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "HP"
+label_settings = SubResource("LabelSettings_d067m")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Tunnels" type="Node3D" parent="World"]
+
+[node name="Tunnel" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 17, 0, 17)
+
+[node name="Tunnel2" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -17, 0, -17)
+
+[node name="Tunnel3" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17, 0, 17)
+
+[node name="Tunnel4" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 17, 0, -17)
+
+[node name="Tunnel6" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -20)
+
+[node name="Tunnel7" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -20)
+
+[node name="Tunnel8" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 20)
+
+[node name="Tunnel9" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 20)
+
+[node name="Tunnel10" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, 7)
+
+[node name="Tunnel11" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, -7)
+
+[node name="Tunnel12" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, 7)
+
+[node name="Tunnel13" parent="World/Tunnels" instance=ExtResource("4_ltdef")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, -7)
+
+[node name="RedBox" parent="World" instance=ExtResource("3_ym5p5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+
+[node name="RedBox2" parent="World" instance=ExtResource("3_ym5p5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+
+[node name="RedBox3" parent="World" instance=ExtResource("3_ym5p5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+
+[node name="RedBox4" parent="World" instance=ExtResource("3_ym5p5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10)
+use_collision = true
+size = Vector3(10, 2, 0.5)
+material = SubResource("StandardMaterial3D_awpwe")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
+use_collision = true
+size = Vector3(10, 2, 0.5)
+material = SubResource("StandardMaterial3D_awpwe")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="World"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 1, 4.37114e-07)
+use_collision = true
+size = Vector3(10, 2, 0.5)
+material = SubResource("StandardMaterial3D_awpwe")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="World"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 1, -4.37114e-07)
+use_collision = true
+size = Vector3(10, 2, 0.5)
+material = SubResource("StandardMaterial3D_awpwe")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(50, 1, 50)
+material = SubResource("StandardMaterial3D_4oan4")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 1.5, 0)
+use_collision = true
+size = Vector3(1, 3, 50)
+material = SubResource("StandardMaterial3D_df5j1")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 1.5, 0)
+use_collision = true
+size = Vector3(1, 3, 50)
+material = SubResource("StandardMaterial3D_df5j1")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="World"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.5, -25.5)
+use_collision = true
+size = Vector3(1, 3, 50)
+material = SubResource("StandardMaterial3D_df5j1")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="World"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.5, 25.5)
+use_collision = true
+size = Vector3(1, 3, 50)
+material = SubResource("StandardMaterial3D_df5j1")
+
+[node name="Player" parent="." node_paths=PackedStringArray("hp_label") instance=ExtResource("2_7yk5s")]
+is_controlling = true
+hp_label = NodePath("../UI/HPLabel")
+
+[node name="Enemy" parent="." instance=ExtResource("2_7yk5s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -5)
+
+[node name="Player2" parent="." instance=ExtResource("2_7yk5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0774, 0, -5.39909)
+
+[node name="Player3" parent="." instance=ExtResource("2_7yk5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7823, 0, -19.9331)
+
+[node name="Player4" parent="." instance=ExtResource("2_7yk5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3622, 2.6, -6.99146)
+
+[node name="Player5" parent="." instance=ExtResource("2_7yk5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0583, 0, 2.12613)
+
+[node name="Player6" parent="." instance=ExtResource("2_7yk5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.98879, 2, -10.1406)
+
+[node name="Player7" parent="." instance=ExtResource("2_7yk5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5397, 0.861498, 22.8778)
+
+[node name="Player8" parent="." instance=ExtResource("2_7yk5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8416, 0, -18.131)
+
+[node name="Player9" parent="." instance=ExtResource("2_7yk5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06917, 0, 19.9783)
+
+[node name="Player10" parent="." instance=ExtResource("2_7yk5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6446, 1, 9.93726)
