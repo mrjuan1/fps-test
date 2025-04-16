@@ -6,7 +6,7 @@ extends CharacterBody3D
 const HALF_PI: float = PI / 2.0
 const SPEED: float = 500.0
 const JUMP_VELOCITY: float = 4.5
-const PLAYER_ROTATION_SPEED: float = 1.0
+const PLAYER_ROTATION_SPEED: float = 0.5
 const CAMERA_TILT_SPEED: float = 0.5
 
 var mouse_relative: Vector2 = Vector2.ZERO

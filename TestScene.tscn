@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://bwblfojtpdh1h"]
 
-[ext_resource type="Script" path="res://TestScene.gd" id="1_4goaw"]
+[ext_resource type="Script" uid="uid://c8rb5fnc5aft" path="res://TestScene.gd" id="1_4goaw"]
 [ext_resource type="PackedScene" uid="uid://be4i40wnj201i" path="res://Objects/Tunnel.tscn" id="2_7q0lm"]
 [ext_resource type="LabelSettings" uid="uid://c4kvbo0d1gj0f" path="res://LabelSettings.tres" id="2_hk17g"]
-[ext_resource type="Script" path="res://FPSLabel.gd" id="3_2ntdi"]
+[ext_resource type="Script" uid="uid://dnhf37d6synl5" path="res://FPSLabel.gd" id="3_2ntdi"]
 [ext_resource type="PackedScene" uid="uid://cf8bqnjdbiujb" path="res://Objects/RedBox.tscn" id="3_egdkh"]
 [ext_resource type="PackedScene" uid="uid://oux3q3jhwmk" path="res://Objects/Player.tscn" id="4_3c32f"]
 

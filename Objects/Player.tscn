@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://oux3q3jhwmk"]
 
-[ext_resource type="Script" path="res://Objects/Player.gd" id="1_j1sj2"]
+[ext_resource type="Script" uid="uid://c74epwmfu6x5c" path="res://Objects/Player.gd" id="1_j1sj2"]
 [ext_resource type="CameraAttributesPractical" uid="uid://cctrnjuxhnxfn" path="res://CameraAttributes.tres" id="2_gwowx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6hmr"]
@@ -77,7 +77,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j2pya"]
 _data = {
-"RESET": SubResource("Animation_00lrl")
+&"RESET": SubResource("Animation_00lrl")
 }
 
 [sub_resource type="Animation" id="Animation_1rcxc"]
@@ -329,11 +329,11 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8o1n0"]
 _data = {
-"aim-shoot": SubResource("Animation_1rcxc"),
-"aiming": SubResource("Animation_vo7bl"),
-"idle": SubResource("Animation_u5ixh"),
-"moving": SubResource("Animation_mfys8"),
-"shoot": SubResource("Animation_5sqfk")
+&"aim-shoot": SubResource("Animation_1rcxc"),
+&"aiming": SubResource("Animation_vo7bl"),
+&"idle": SubResource("Animation_u5ixh"),
+&"moving": SubResource("Animation_mfys8"),
+&"shoot": SubResource("Animation_5sqfk")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pikx1"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cy37lofsnelat"]
 
-[ext_resource type="Script" path="res://Objects/RigidGun.gd" id="1_4x7w1"]
+[ext_resource type="Script" uid="uid://dqpgs303g8aiu" path="res://Objects/RigidGun.gd" id="1_4x7w1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utc4h"]
 

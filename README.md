@@ -4,7 +4,7 @@
 
 A prototype first-person shooter. This is meant to be a small-ish project for learning some more [Godot](https://godotengine.org).
 
-Made with [Godot](https://godotengine.org) 4.2.1.
+Made with [Godot](https://godotengine.org) 4.4.
 
 This is still very WIP and not very useful (or fun) yet. See [TODO.md](TODO.md) for the current todo-list.
 
